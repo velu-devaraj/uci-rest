@@ -1,0 +1,8 @@
+{
+    "enginePath": "C:\\Users\\velud\\projects\\cpp\\lc0-dnnl\\lc0-v0.31.1-windows-cpu-dnnl",
+    "engineExecutable": "lc0.exe",
+    "workingDirectory": "C:\\Users\\velud\\projects\\cpp\\lc0-dnnl\\lc0-v0.31.1-windows-cpu-dnnl",
+    "engineProcessMaxCount": 3,
+    "retryCount" : 3,
+    "milliSecWait" : 1
+}
