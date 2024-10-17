@@ -1,0 +1,122 @@
+openapi: "3.0.3"
+info:
+  title: "UCI Engine - OpenAPI 3.0"
+  description: "UCI API Spec"
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /about:
+    get:
+      tags:
+        - about
+      summary: Get current quote for a security
+      operationId: aboutApp
+      responses:
+        '200':
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AboutResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AboutResponse'
+
+  /engine:
+      get:
+        tags:
+          - about
+        summary: Get current quote for a security
+        operationId: engineName
+        responses:
+          '200':
+            description: "OK"
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/EngineInfoResponse'
+              application/xml:
+                schema:
+                  $ref: '#/components/schemas/EngineInfoResponse'
+  /commands:
+    post:
+      tags:
+        - moves
+      summary: uci commands
+      description: uci commands
+      operationId: execute
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Command'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Command'
+        required: true
+      responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/CommandResponse'
+              application/xml:
+                schema:
+                  $ref: '#/components/schemas/CommandResponse'
+          '400':
+            description: Invalid request
+components:
+  schemas:
+    Command:
+      type: object
+      properties:
+        commandString:
+          type: array
+          items: 
+            type: string
+      example: "commandString: position startpos,go depth 5"
+    CommandResponse:
+      type: object
+      properties:
+        engineResult:
+          type: array
+          items: 
+            type: string
+          minItems: 1
+        error:
+          type: boolean
+        errorString:
+          type: array
+          items:
+            type: string
+    AboutResponse:
+      type: object
+      properties:
+        about:
+          $ref: '#/components/schemas/About'
+    About:
+      type: object
+      properties:
+        description:
+          type: string
+        engines:
+          type: array
+          items:
+            type: string
+    EngineInfoResponse:
+      type: object
+      properties:
+        engine:
+          $ref: '#/components/schemas/Engine'
+    Engine:
+      type: object
+      properties:
+        description:
+          type: string
+        engineName:
+          type: string
+        link:
+          type: string
+
