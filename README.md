@@ -4,7 +4,7 @@ Spring Boot REST Web Application for a backend UCI engine
 
 # Modules 
 
-### [UCI Open API Server](uci-rest/README.md)
+### [UCI Open API Server](uci-api/README.md)
 Spring Boot REST Web Application for a backend UCI engine
 
 
