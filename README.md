@@ -11,6 +11,9 @@ Spring Boot REST Web Application for a backend UCI engine
 ### [UCI Open API Client Code Generators](uci.client.api/README.md)
 Client Code Generator using Open API openapi-generator-maven-plugin. 
 
+### [UCI Open API Test](uci-tsn/README.md)
+Test for Open API Server under uci-api
+
 
 
 

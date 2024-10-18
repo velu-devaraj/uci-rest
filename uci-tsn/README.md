@@ -1,6 +1,6 @@
 # UCI Playwright Tests 
 
-Spring Boot REST Web Application for a backend UCI engine
+Test project for the UCI API server
 
 ### Installation
 
