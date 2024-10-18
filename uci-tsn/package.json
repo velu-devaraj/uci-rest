@@ -1,0 +1,17 @@
+{
+  "devDependencies": {
+    "@playwright/test": "^1.48.0",
+    "@types/node": "^22.7.5"
+  },
+  "name": "uci-tsn",
+  "version": "1.0.0",
+  "description": "uci",
+  "main": "index.js",
+  "dependencies": {
+    "request": "^2.88.2",
+    "undici-types": "^6.19.8"
+  },
+  "scripts": {},
+  "author": "",
+  "license": "ISC"
+}
