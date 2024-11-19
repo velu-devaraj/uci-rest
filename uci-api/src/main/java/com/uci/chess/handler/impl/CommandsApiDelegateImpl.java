@@ -13,45 +13,45 @@ import org.springframework.web.context.request.RequestContextHolder;
 import com.uci.chess.handler.CommandsApiDelegate;
 import com.uci.chess.model.Command;
 import com.uci.chess.model.CommandResponse;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Service
 //@RequestScope
 public class CommandsApiDelegateImpl implements CommandsApiDelegate {
-	private final UCIService uciService;	
-	
+	private final UCIService uciService;
+
 	private final Logger log = LoggerFactory.getLogger(CommandsApiDelegateImpl.class);
 
-	
-	//EngineParams uciEngineParams;
+
+
+
+	// EngineParams uciEngineParams;
 	@Autowired
-	CommandsApiDelegateImpl(EngineParams uciEngineParams) throws IOException{
+	CommandsApiDelegateImpl(EngineParams uciEngineParams) throws IOException {
 		UCICommands.init();
 		uciService = new UCIService(uciEngineParams);
-		log.debug("uciService created" );
+		log.debug("uciService created");
 	}
 
+	public ResponseEntity<CommandResponse> execute(Command command) {
+		String sid = RequestContextHolder.currentRequestAttributes().getSessionId();
+		log.debug("command session : %s".formatted(sid));
 
-
-	
-    public  ResponseEntity<CommandResponse> execute(Command command) {
-    	String sid = RequestContextHolder.currentRequestAttributes().getSessionId();
-    	log.debug("command session : %s".formatted(sid) );
-    	
 		CommandResponse cr = new CommandResponse();
 		try {
 			cr = uciService.execute(command);
 		} catch (Exception e) {
-			log.debug("Unknown error : ",e);
-			cr.addErrorStringItem("Unknown error : " + e.getLocalizedMessage() );
+			log.debug("Unknown error : ", e);
+			cr.addErrorStringItem("Unknown error : " + e.getLocalizedMessage());
 			cr.setError(true);
 
 			e.printStackTrace();
 		}
 
 		ResponseEntity<CommandResponse> re = ResponseEntity.status(HttpStatus.OK).body(cr);
-
+		//processResponse();
 		return re;
 
-        }
+	}
 
 }

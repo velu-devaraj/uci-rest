@@ -17,8 +17,11 @@
         <springdoc.version>1.8.0</springdoc.version>
         <swagger-ui.version>5.3.1</swagger-ui.version>
         <tomcat.version>10.1.30</tomcat.version>
-        <start-class>
-            org.openapitools.OpenApiGeneratorApplication
+        <start-class> 
+        <!-- modified from org.openapitools.OpenApiGeneratorApplication
+         to use modifed and customized code for configuration  -->
+            com.openapitools.OpenApiGeneratorApplication
+           
         </start-class>
     </properties>
     <parent>
@@ -62,7 +65,8 @@
                                 <modelPackage>${default.package}.model</modelPackage>
                                 <skipValidateSpec>true</skipValidateSpec>
                                 <useSpringBoot3>true</useSpringBoot3>
-
+                                
+                                <useJakartaEe>true</useJakartaEe>
                             </configOptions>
 
                         </configuration>
@@ -70,7 +74,19 @@
                 </executions>
 
             </plugin>
-
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <!-- <version>3.8.1</version> -->
+            <!-- Exclude auto generated Configuration code to allow custom 
+            configuration code  -->
+            <configuration>
+                <excludes>
+                    <exclude>org/openapitools/**</exclude>
+                </excludes>
+            </configuration>
+            
+        </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -164,6 +180,12 @@
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
             <version>3.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>6.0.0</version>
+            <scope>provided</scope>
         </dependency>
 
     </dependencies>
