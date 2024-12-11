@@ -30,7 +30,13 @@
         <version>3.3.4</version>
         <relativePath /> <!-- lookup parent from repository -->
     </parent>
+<distributionManagement> 
+<repository> 
+<id>velu-devaraj</id> 
+<url>https://maven.pkg.github.com/velu-devaraj</url> 
+</repository> 
 
+</distributionManagement>
     <build>
         <resources>
             <resource>
