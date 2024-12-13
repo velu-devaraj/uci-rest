@@ -16,7 +16,8 @@
   </repository>
   <repository>
     <id>github</id>
-    <url>https://maven.pkg.github.com/velu-devaraj</url>
+    <name>GitHub Packages</name>
+    <url>https://maven.pkg.github.com/velu-devaraj/uci-rest</url>
     <snapshots>
       <enabled>true</enabled>
     </snapshots>
