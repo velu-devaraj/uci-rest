@@ -17,12 +17,11 @@
         <springdoc.version>1.8.0</springdoc.version>
         <swagger-ui.version>5.3.1</swagger-ui.version>
         <tomcat.version>10.1.30</tomcat.version>
-        <start-class> 
-        <!-- modified from org.openapitools.OpenApiGeneratorApplication
-         to use modifed and customized code for configuration  -->
-            com.openapitools.OpenApiGeneratorApplication
-           
-        </start-class>
+        <start-class>
+            <!-- modified from org.openapitools.OpenApiGeneratorApplication
+         to use modifed and customized code for configuration  --> 
+         com.openapitools.OpenApiGeneratorApplication 
+         </start-class>
     </properties>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -30,13 +29,13 @@
         <version>3.3.4</version>
         <relativePath /> <!-- lookup parent from repository -->
     </parent>
-<distributionManagement> 
-<repository> 
-<id>github</id> 
-<url>https://maven.pkg.github.com/velu-devaraj/uci-rest</url> 
-</repository> 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/velu-devaraj/uci-rest</url>
+        </repository>
 
-</distributionManagement>
+    </distributionManagement>
     <build>
         <resources>
             <resource>
@@ -71,7 +70,7 @@
                                 <modelPackage>${default.package}.model</modelPackage>
                                 <skipValidateSpec>true</skipValidateSpec>
                                 <useSpringBoot3>true</useSpringBoot3>
-                                
+
                                 <useJakartaEe>true</useJakartaEe>
                             </configOptions>
 
@@ -80,19 +79,19 @@
                 </executions>
 
             </plugin>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <!-- <version>3.8.1</version> -->
-            <!-- Exclude auto generated Configuration code to allow custom 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <!-- <version>3.8.1</version> -->
+                <!-- Exclude auto generated Configuration code to allow custom 
             configuration code  -->
-            <configuration>
-                <excludes>
-                    <exclude>org/openapitools/**</exclude>
-                </excludes>
-            </configuration>
-            
-        </plugin>
+                <configuration>
+                    <excludes>
+                        <exclude>org/openapitools/**</exclude>
+                    </excludes>
+                </configuration>
+
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -143,7 +142,8 @@
         </dependency>
 
 
-        <!--SpringDoc dependencies -->
+        <!--SpringDoc
+        dependencies -->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
