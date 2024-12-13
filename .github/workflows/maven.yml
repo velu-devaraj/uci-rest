@@ -35,6 +35,6 @@ jobs:
     - name: Build with Maven
       run: mvn -q -B package --file uci-api/pom.xml
     - name: Publish to GitHub Packages Apache Maven
-      run: mvn --file ./uci-api/pom.xml deploy -s $GITHUB_WORKSPACE/settings.xml
+      run: mvn -e --file ./uci-api/pom.xml deploy -s $GITHUB_WORKSPACE/settings.xml
       env:
         UCI_REST_ACTION_TOKEN: ${{ secrets.UCI_REST_ACTION_TOKEN }}
