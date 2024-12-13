@@ -32,7 +32,7 @@
     </parent>
 <distributionManagement> 
 <repository> 
-<id>velu-devaraj</id> 
+<id>github</id> 
 <url>https://maven.pkg.github.com/velu-devaraj</url> 
 </repository> 
 
