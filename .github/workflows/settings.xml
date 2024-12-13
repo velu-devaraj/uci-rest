@@ -2,7 +2,7 @@
   <server>
     <id>github</id>
     <username>velu-devaraj</username>
-	<password>${env.GITHUB_TOKEN}</password>
+	<password>${env.UCI_REST_ACTION_TOKEN}</password>
   </server>
 </servers>
 
