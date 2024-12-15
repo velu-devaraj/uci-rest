@@ -28,8 +28,9 @@ jobs:
         settings-path: ${{ github.workspace }} # location for the settings.xml file
     - name: Set environment variables
       run: echo "Setting token environment variable"
-      env: 
-        UCI_REST_ACTION_TOKEN: ${{ secrets.UCI_REST_ACTION_TOKEN }}    
+      env:
+        GITHUB_ACTOR: velu-devaraj
+        GITHUB_TOKEN: ${{ secrets.UCI_REST_ACTION_TOKEN }}    
     - name: Current Working Directory
       run: echo "Current directory is $PWD"
     - name: Build with Maven

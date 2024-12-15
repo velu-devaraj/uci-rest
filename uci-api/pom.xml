@@ -16,7 +16,7 @@
         <maven.compiler.release>17</maven.compiler.release>
         <springdoc.version>1.8.0</springdoc.version>
         <swagger-ui.version>5.3.1</swagger-ui.version>
-        <tomcat.version>10.1.30</tomcat.version>
+        <!--         <tomcat.version>10.1.30</tomcat.version>  -->
         <start-class>
             <!-- modified from org.openapitools.OpenApiGeneratorApplication
          to use modifed and customized code for configuration  --> 
@@ -114,9 +114,16 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <artifactId>spring-boot-starter</artifactId>
             <!--      <scope>provided</scope>-->
+
+
             <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+
                 <exclusion>
                     <groupId>org.slf4j</groupId>
                     <artifactId>slf4j-log4j12</artifactId>
@@ -127,11 +134,18 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!--
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-core</artifactId>
             <version>10.1.30</version>
         </dependency>
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jetty</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
