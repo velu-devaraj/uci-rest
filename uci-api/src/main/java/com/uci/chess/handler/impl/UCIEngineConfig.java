@@ -19,7 +19,7 @@ public class UCIEngineConfig {
 
 	private final Logger log = LoggerFactory.getLogger(UCIEngineConfig.class);
 
-	@Value("classpath:engine-parameters.json")
+	@Value("file:./config/engine-parameters.json")
 	private Resource paramFile;
 
 	@Bean
