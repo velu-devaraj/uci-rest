@@ -1,8 +1,0 @@
-{
-    "enginePath": "lc0 chess engine path here - lc0-dnnl\\lc0-v0.31.1-windows-cpu-dnnl",
-    "engineExecutable": "lc0.exe",
-    "workingDirectory": " working dir lc0-dnnl\\lc0-v0.31.1-windows-cpu-dnnl",
-    "engineProcessMaxCount": 3,
-    "retryCount" : 3,
-    "milliSecWait" : 1
-}
