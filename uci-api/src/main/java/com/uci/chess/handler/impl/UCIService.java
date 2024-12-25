@@ -29,7 +29,7 @@ public class UCIService {
 		int retrycount = uciEngineParams.getInt("retryCount");
 		int milliSecWait = uciEngineParams.getInt("milliSecWait");
 
-		processBuilder = new ProcessBuilder(enginePath + "\\" + engineExecutable);
+		processBuilder = new ProcessBuilder(enginePath + File.separator + engineExecutable);
 		processBuilder.directory(new File(workingDirectory));
 
 		processPoolManager = ProcessPoolManager.getManager(engineProcessMaxCount, retrycount, milliSecWait,
