@@ -49,6 +49,7 @@ public class ProcessPoolManager {
 			// create new process, add and return;
 			try {
 			Process p = processBuilder.start();
+			log.debug("process info : user {}, cmd,  {}, cmdline {} ",p.info().user(), p.info().command(), p.info().commandLine());
 			ProcessManager pm = new ProcessManager(p);
 			if (pm.getLock().tryLock()) {
 				processPool.add(pm);

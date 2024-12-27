@@ -23,12 +23,21 @@ public class UCIService {
 		log.debug("UCIService started");
 
 		String enginePath = uciEngineParams.getString("enginePath");
+		log.debug("enginePath {}", enginePath );
 		String engineExecutable = uciEngineParams.getString("engineExecutable");
+		log.debug("engineExecutable {}", engineExecutable );
 		String workingDirectory = uciEngineParams.getString("workingDirectory");
+		log.debug("workingDirectory {}", workingDirectory );
 		int engineProcessMaxCount = uciEngineParams.getInt("engineProcessMaxCount");
 		int retrycount = uciEngineParams.getInt("retryCount");
 		int milliSecWait = uciEngineParams.getInt("milliSecWait");
 
+		processBuilder = new ProcessBuilder(enginePath + File.separator + engineExecutable);
+		processBuilder.directory(new File(workingDirectory));
+		log.debug("Exe path : {} ",enginePath + File.separator + engineExecutable);
+		File f = new File(enginePath + File.separator + engineExecutable);
+		log.debug("File: exists {} , path {} , executable {}, size {} " , f.exists(), f.getAbsolutePath(),f.canExecute() , f.getTotalSpace());
+		
 		processBuilder = new ProcessBuilder(enginePath + File.separator + engineExecutable);
 		processBuilder.directory(new File(workingDirectory));
 
@@ -64,10 +73,15 @@ public class UCIService {
 			log.debug("pid,sid : {} {} ",pm.getProcess().pid(),sid);
 			BufferedWriter bw = pm.getProcess().outputWriter();
 			BufferedReader br = pm.getProcess().inputReader();
-			BufferedReader er = pm.getProcess().inputReader();
+			BufferedReader er = pm.getProcess().errorReader();
 
 			// flush out previous responses
-			flushout(er);
+		
+			log.debug("flush error stream 1:");
+			String errorString = flushout(er);
+			log.debug("error stream: {} ", errorString );
+			
+			
 			flushout(br);
 
 			for (String cline : command.getCommandString()) {
@@ -101,8 +115,9 @@ public class UCIService {
 
 			readResponse(cr, outputMarker, br);
 
-			log.debug("error stream:");
-			String errorString = flushout(er);
+			log.debug("flush error stream 2:");
+			errorString = flushout(er);
+			log.debug("error stream: {} ", errorString );
 			log.debug("output stream:");
 			String resString = flushout(br);
 			cr.addEngineResultItem(resString);
